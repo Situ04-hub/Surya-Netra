@@ -18,6 +18,7 @@ print(f"Loaded {len(df)} rows")
 # Gannon Storm: May 8-10, 2024
 mask = (df['timestamp'] >= '2024-05-08') & (df['timestamp'] <= '2024-05-10')
 replay = df[mask].copy()
+
 os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
 replay.to_csv(OUTPUT, index=False)
 

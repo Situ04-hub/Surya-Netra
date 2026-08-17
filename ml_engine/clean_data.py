@@ -21,18 +21,18 @@ df = pd.read_csv(INPUT_FILE)
 df['timestamp'] = pd.to_datetime(df['timestamp'])
 print(f"Loaded {len(df)} rows")
 
-# Quality filter
+# Filter quality flags (keep only good data)
 df_clean = df[df['quality_b'] == 0].copy()
 print(f"Rows after quality filter: {len(df_clean)}")
 
-# Remove invalid
+# Remove invalid values
 df_clean = df_clean[df_clean['xrsa'] >= 0]
 df_clean = df_clean[df_clean['xrsb'] >= 0]
 df_clean = df_clean.dropna()
 print(f"Rows after cleaning: {len(df_clean)}")
 
-# Sort and save
 df_clean = df_clean.sort_values('timestamp').reset_index(drop=True)
+
 os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 df_clean.to_csv(OUTPUT_FILE, index=False)
 

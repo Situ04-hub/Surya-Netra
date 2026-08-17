@@ -26,15 +26,22 @@ df['flux_ratio_5min'] = df['flux_5min_avg'] / (df['flux_60min_avg'] + 1e-12)
 df['flux_ratio_15min'] = df['flux_15min_avg'] / (df['flux_60min_avg'] + 1e-12)
 df['ratio_derivative'] = df['flux_ratio_5min'].diff(1)
 
-# Labels
+# Create labels
 def classify(flux):
-    if flux >= 1e-3: return 3
-    elif flux >= 1e-4: return 2
-    elif flux >= 1e-5: return 1
-    else: return 0
+    if flux >= 1e-3:
+        return 3  # X-class
+    elif flux >= 1e-4:
+        return 2  # M-class
+    elif flux >= 1e-5:
+        return 1  # C-class
+    else:
+        return 0  # No flare
+
 df['label'] = df['xrsb'].apply(classify)
 
 df = df.dropna()
+
+# Split chronologically (80/20)
 split = int(len(df) * 0.8)
 train = df.iloc[:split].copy()
 test = df.iloc[split:].copy()
