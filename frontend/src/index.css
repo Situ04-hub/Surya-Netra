@@ -1,0 +1,3 @@
+/* Surya-Netra — global entry stylesheet. */
+@import "./styles/tokens.css";
+@import "./styles/global.css";
