@@ -1,5 +1,6 @@
 # Surya-Netra
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 Surya-Netra: Predict in Space, Confirm on Earth. An early warning dashboard that combines NOAA solar telemetry with local geomagnetic validation.
 
@@ -29,6 +30,9 @@ The optional hardware simulator can be started after the backend is running:
 ```powershell
 python hardware/src/mock_hardware.py
 ```
+=======
+Surya-Netra: Predict in Space, Confirm on Earth.  An end-to-end, low-cost early warning system bridging orbital solar telemetry with localized hardware-level geomagnetic validation.
+>>>>>>> 13a7ccade2979ad331e4aefc3a5c0caeb58c714e
 =======
 Surya-Netra: Predict in Space, Confirm on Earth.  An end-to-end, low-cost early warning system bridging orbital solar telemetry with localized hardware-level geomagnetic validation.
 >>>>>>> 13a7ccade2979ad331e4aefc3a5c0caeb58c714e

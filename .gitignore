@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -223,6 +224,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 =======
+=======
+>>>>>>> 13a7ccade2979ad331e4aefc3a5c0caeb58c714e
 # ============================================================
 # SURYA-NETRA PROJECT FILES
 # ============================================================
@@ -245,5 +248,9 @@ ml_engine/**/__pycache__/
 
 # Temporary generated files
 *.tmp
+<<<<<<< HEAD
+*.temp
+>>>>>>> 13a7ccade2979ad331e4aefc3a5c0caeb58c714e
+=======
 *.temp
 >>>>>>> 13a7ccade2979ad331e4aefc3a5c0caeb58c714e
