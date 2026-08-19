@@ -1,6 +1,7 @@
 # ml_engine/engineer_features.py
 
 import pandas as pd
+import numpy as np
 import os
 
 ML_ENGINE_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -25,6 +26,19 @@ df['flux_diff_15min'] = df['xrsb'].diff(15)
 df['flux_ratio_5min'] = df['flux_5min_avg'] / (df['flux_60min_avg'] + 1e-12)
 df['flux_ratio_15min'] = df['flux_15min_avg'] / (df['flux_60min_avg'] + 1e-12)
 df['ratio_derivative'] = df['flux_ratio_5min'].diff(1)
+
+# Additional features required by the final XGBoost model
+df = df.sort_values('timestamp').reset_index(drop=True)
+df = df.set_index('timestamp')
+
+df['flux_12h_max'] = df['xrsb'].rolling(window='12h', min_periods=1).max()
+df['flux_24h_max'] = df['xrsb'].rolling(window='24h', min_periods=1).max()
+
+hours = df.index.hour
+df['hour_sin'] = np.sin(2 * np.pi * hours / 24.0)
+df['hour_cos'] = np.cos(2 * np.pi * hours / 24.0)
+
+df = df.reset_index()
 
 # Create labels
 def classify(flux):
