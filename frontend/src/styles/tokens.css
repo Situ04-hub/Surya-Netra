@@ -1,0 +1,75 @@
+/* ============================================================
+   SURYA-NETRA DESIGN TOKENS
+   Central design system — do not scatter raw colors in JSX.
+   ============================================================ */
+
+:root {
+  /* ---- Backgrounds (deep-space / midnight navy) ---- */
+  --color-bg: #04060d;
+  --color-bg-deep: #02040a;
+  --color-bg-panel: #070b16;
+
+  /* ---- Surfaces (glassmorphism) ---- */
+  --color-surface: rgba(16, 24, 44, 0.5);
+  --color-surface-solid: #0b1220;
+  --color-surface-elevated: rgba(22, 32, 56, 0.72);
+
+  /* ---- Borders ---- */
+  --color-border: rgba(120, 176, 255, 0.12);
+  --color-border-strong: rgba(120, 176, 255, 0.28);
+  --color-border-faint: rgba(120, 176, 255, 0.06);
+
+  /* ---- Text ---- */
+  --color-text-primary: #e8eefc;
+  --color-text-secondary: #9aa9c7;
+  --color-text-muted: #5d6b8c;
+
+  /* ---- Functional accents ---- */
+  --color-cyan: #28e0ff;            /* telemetry */
+  --color-cyan-dim: rgba(40, 224, 255, 0.5);
+  --color-cyan-soft: rgba(40, 224, 255, 0.12);
+  --color-violet: #a78bfa;          /* prediction / ML */
+  --color-violet-dim: rgba(167, 139, 250, 0.5);
+  --color-violet-soft: rgba(167, 139, 250, 0.13);
+  --color-amber: #ffb337;           /* solar / warnings */
+  --color-amber-dim: rgba(255, 179, 55, 0.5);
+  --color-amber-soft: rgba(255, 179, 55, 0.12);
+  --color-green: #38d996;           /* healthy / validated */
+  --color-green-soft: rgba(56, 217, 150, 0.12);
+  --color-warning: #ff9f2e;
+  --color-warning-soft: rgba(255, 159, 46, 0.12);
+  --color-critical: #ff4d5e;        /* genuine alert states only */
+  --color-critical-soft: rgba(255, 77, 94, 0.14);
+  --color-red-soft: rgba(255, 77, 94, 0.14);
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Rajdhani", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", ui-monospace, Consolas, monospace;
+
+  /* ---- Radii ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* ---- Glows ---- */
+  --glow-cyan: 0 0 22px rgba(40, 224, 255, 0.18);
+  --glow-violet: 0 0 22px rgba(167, 139, 250, 0.2);
+  --glow-amber: 0 0 22px rgba(255, 179, 55, 0.18);
+  --glow-red: 0 0 24px rgba(255, 77, 94, 0.22);
+  --glow-green: 0 0 22px rgba(56, 217, 150, 0.18);
+
+  /* ---- Shadows ---- */
+  --shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-med: 280ms;
+
+  /* ---- Layout ---- */
+  --sidebar-w: 72px;
+  --header-h: 64px;
+  --content-max: 1680px;
+}
