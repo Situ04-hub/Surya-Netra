@@ -6,18 +6,32 @@
 ml_engine/results/archive/
 
 # Archived/old models
-ml_engine/models/ARCHIEVE/
+ml_engine/models/ARCHIEVE/*
+
+# Keep archive folder
+!ml_engine/models/ARCHIEVE/.gitkeep
 
 # Generated evaluation results
 ml_engine/results/*.csv
 ml_engine/models/*.csv
 
 # ML experiments / development scripts
-ml_engine/experiments/
+ml_engine/experiments/*
 
-# Python cache inside ml_engine
+# Keep experiments folder
+!ml_engine/experiments/.gitkeep
+
+# Python cache
 ml_engine/**/__pycache__/
 
 # Temporary generated files
 *.tmp
 *.temp
+
+# Generated ML datasets
+ml_engine/data/processed/*.csv
+ml_engine/data/replay/*.csv
+
+# Keep generated-data folders
+!ml_engine/data/processed/.gitkeep
+!ml_engine/data/replay/.gitkeep
