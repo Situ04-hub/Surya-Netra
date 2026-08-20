@@ -1,0 +1,34 @@
+SURYA-NETRA: Hardware Calculation & Alert Logic
+=================================================
+
+This document explains the mathematical and conditional logic behind the telemetry dashboard, space weather predictions, and hardware alerts.
+
+1. NOAA Space Weather Probability
+---------------------------------
+The backend continuously polls the NOAA GOES primary X-ray flux data.
+Calculation Logic:
+- If Flux < 1e-6 W/m²: Status is "Normal / Quiet" with Prediction Probability = 20%. The `noaa_alert_active` flag is set to FALSE.
+- If Flux >= 1e-6 W/m²: Status is "C-CLASS" Flare (Minor). `noaa_alert_active` is FALSE.
+- If Flux >= 1e-5 W/m² (M-Class) or >= 1e-4 W/m² (X-Class): The `noaa_alert_active` flag is set to TRUE, and Prediction Probability jumps to 80% (Warning mode).
+
+2. Hardware "Yellow Light" (Armed Warning Mode)
+-----------------------------------------------
+The ESP32 / Arduino node continuously polls the backend API.
+- Condition: When `noaa_alert_active` == TRUE, the hardware enters ARMED_WARNING mode.
+- Logic: The polling speed increases from 2.0 seconds to 0.5 seconds for high-resolution monitoring.
+- Visuals: The UI's Space Prediction goes to "WARNING" (Amber/Yellow) and the Ground Station status becomes "VALIDATING".
+
+3. Hardware "Red Light" (Danger Shutdown Mode)
+----------------------------------------------
+While in the Armed Warning mode, the hardware continuously measures the 3-axis magnetic field via the QMC5883L sensor.
+Calculation Logic:
+- Magnitude = sqrt(Bx² + By² + Bz²)
+- Deviation = Magnitude - Danger_Threshold (set via Dashboard UI)
+- If Magnitude > Danger_Threshold: The anomaly is mathematically confirmed. The hardware state switches to "DANGER_SHUTDOWN".
+- Visuals: The Ground Validation panel turns RED, and the overall GMD severity elevates to Level 4 (Severe) or Level 5 (Extreme). The system visually signals a red alert.
+
+4. Clearing the Alert (Green Light)
+-----------------------------------
+- Condition: When the Solar Flare clears (the simulated or live flux drops below 1e-5), the system triggers a reset.
+- Logic: The `noaa_alert_active` flag returns to FALSE. The hardware detects this on its next polling cycle.
+- Visuals: The hardware drops back to IDLE mode, stops simulating the anomaly, and returns to normal background magnetic readings (~4.12 µT). The UI Dashboard goes entirely Green ("SAFE").
