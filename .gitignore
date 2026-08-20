@@ -48,3 +48,21 @@ ml_engine/data/replay/*.csv
 
 *.tmp
 *.temp
+
+
+
+# ML experiments / development scripts
+ml_engine/experiments/*
+!ml_engine/experiments/.gitkeep
+
+# Archived/old models
+ml_engine/models/ARCHIEVE/*
+!ml_engine/models/ARCHIEVE/.gitkeep
+
+# Generated ML datasets
+ml_engine/data/processed/*.csv
+ml_engine/data/replay/*.csv
+
+# Keep generated-data folders
+!ml_engine/data/processed/.gitkeep
+!ml_engine/data/replay/.gitkeep
