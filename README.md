@@ -7,17 +7,15 @@ Surya-Netra: Predict in Space, Confirm on Earth. An end-to-end, low-cost early w
 
 Start the backend from the repository root:
 
-```powershell
-Push-Location backend
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8000
+```powershell/Gitbash
+cd Surya-Netra-main/backend
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 In a second terminal, start the frontend:
 
 ```powershell
-Push-Location frontend
+cd Surya-Netra-main/frontend
 npm install
 npm run dev
 ```
@@ -27,5 +25,6 @@ Open the Vite URL shown in the terminal. The frontend defaults to `http://127.0.
 The optional hardware simulator can be started after the backend is running:
 
 ```powershell
-python hardware/src/mock_hardware.py
+cd hardware/src
+python mock_hardware.py
 ```
